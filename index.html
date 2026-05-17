@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clara Houy — Marketing & RSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --cream-dark: #F2EDE4;
+    --cream-mid: #EDE6DA;
+    --tan: #C9B99A;
+    --tan-dark: #8C7B6B;
+    --ink: #2C2825;
+    --ink-light: #5C534A;
+    --ink-faint: #A89E93;
+    --accent: #8C7B6B;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--cream-mid);
+    padding: 1.1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 4rem;
+    align-items: center;
+    padding: 5rem 4rem 4rem;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+
+  .hero-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--tan);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--tan-dark);
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    max-width: 460px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--tan-dark);
+    border: 1px solid var(--tan);
+    padding: 0.3rem 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-dark {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .btn-dark:hover { background: var(--ink-light); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--tan);
+  }
+
+  .btn-outline:hover { background: var(--cream-dark); }
+
+  /* Photo zone */
+  .hero-photo {
+    position: relative;
+  }
+
+  .photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-mid);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  /* ── À modifier : remplace ce bloc par <img src="ta-photo.jpg" ...> ── */
+  .photo-placeholder {
+    text-align: center;
+    color: var(--tan);
+  }
+
+  .photo-placeholder svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+
+  .photo-placeholder span {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tan);
+    display: block;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 5rem 4rem;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--cream-mid);
+  }
+
+  /* ── PORTFOLIO ── */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-mid);
+    padding: 2rem;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+
+  .project-card:hover { border-color: var(--tan); }
+
+  .project-type {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 0.75rem;
+  }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .project-subtitle {
+    font-size: 0.75rem;
+    color: var(--tan-dark);
+    font-style: italic;
+    font-family: var(--serif);
+    margin-bottom: 1rem;
+  }
+
+  .project-desc {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    border: 1px solid var(--cream-mid);
+    padding: 0.2rem 0.6rem;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tan-dark);
+    text-decoration: none;
+    margin-top: 1.25rem;
+    border-bottom: 1px solid var(--tan);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+
+  .project-link:hover { color: var(--ink); }
+
+  /* ── EXPÉRIENCE ── */
+  .exp-list { display: flex; flex-direction: column; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--cream-mid);
+    align-items: baseline;
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-dates {
+    font-size: 0.7rem;
+    color: var(--tan);
+    letter-spacing: 0.05em;
+    padding-top: 0.15rem;
+  }
+
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-company {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+  }
+
+  .exp-location {
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── COMPÉTENCES ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .skills-group-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+
+  .skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skills-list li {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .skills-list li::before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1px;
+    background: var(--tan);
+    flex-shrink: 0;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink);
+    border-bottom: none;
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-left .section-label { color: var(--tan); }
+
+  .contact-left .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--tan);
+    margin-right: 0.75rem;
+    vertical-align: middle;
+  }
+
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-top: 1rem;
+  }
+
+  .contact-heading em { font-style: italic; color: var(--tan); }
+
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .contact-item-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+
+  .contact-item-value {
+    font-size: 0.9rem;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item-value:hover { color: var(--tan); }
+
+  .contact-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .btn-cream {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+  }
+
+  .btn-cream:hover { background: var(--cream-dark); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.25);
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--tan); color: var(--tan); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  footer p {
+    font-size: 0.65rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-label  { animation: fadeUp 0.6s ease both; }
+  .hero h1     { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-sub    { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-tags   { animation: fadeUp 0.6s ease 0.3s both; }
+  .hero-cta    { animation: fadeUp 0.6s ease 0.4s both; }
+  .hero-photo  { animation: fadeUp 0.6s ease 0.2s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; min-height: auto; }
+    .hero-photo { order: -1; max-width: 200px; }
+    section { padding: 3rem 1.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .exp-dates { font-size: 0.65rem; }
+    .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══ -->
+<nav>
+  <a href="#" class="nav-logo">Clara Houy</a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" style="border-bottom: 1px solid var(--cream-mid);">
+  <div class="hero-left">
+    <div class="hero-label">Marketing Digital &amp; RSE</div>
+    <h1>Bonjour,<br>je suis <em>Clara.</em></h1>
+    <p class="hero-sub">
+      Diplômée de l'IESEG School of Management, je conçois des stratégies marketing à impact — alliant créativité, rigueur digitale et engagement RSE.<br><br>
+      Disponible en CDI, CDD ou VIE · Paris · Lille · International
+    </p>
+    <div class="hero-tags">
+      <span class="tag">IESEG Grande École</span>
+      <span class="tag">HubSpot CRM</span>
+      <span class="tag">Google Analytics</span>
+      <span class="tag">Expérience Asie</span>
+      <span class="tag">Anglais courant</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-dark">Me contacter</a>
+      <!-- ── À modifier : remplace le lien href par l'URL de ton CV en ligne ── -->
+      <a href="#" class="btn btn-outline">Télécharger le CV</a>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <!-- ══════════════════════════════════════════════════
+           PHOTO : remplace ce bloc par :
+           <img src="photo.jpg" alt="Clara Houy" style="width:100%;height:100%;object-fit:cover;">
+           et place ton fichier photo.jpg dans le même dossier.
+      ══════════════════════════════════════════════════ -->
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>Ta photo ici</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PORTFOLIO ══ -->
+<section id="portfolio">
+  <div class="section-header">
+    <span class="section-label">Portfolio</span>
+  </div>
+  <div class="portfolio-grid">
+
+    <div class="project-card">
+      <div class="project-type">Étude de cas · RSE &amp; Marketing international</div>
+      <div class="project-title">Caudalie × Vietnam</div>
+      <div class="project-subtitle">Stratégie d'expansion sur le marché de la beauté</div>
+      <p class="project-desc">
+        Comment une marque de cosmétiques naturels française peut-elle s'implanter durablement au Vietnam ? Analyse de marché, stratégie d'entrée, plan RSE ancré localement et feuille de route 3 ans.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Stratégie internationale</span>
+        <span class="project-tag">Clean beauty</span>
+        <span class="project-tag">Impact RSE</span>
+        <span class="project-tag">TikTok & influenceurs</span>
+        <span class="project-tag">Analyse de marché</span>
+      </div>
+      <!-- ── À modifier : remplace # par le lien vers ton PDF Caudalie ── -->
+      <a href="#" class="project-link">Lire l'étude de cas →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-type">Expérience réelle · Edtech</div>
+      <div class="project-title">Stratégie social & événements</div>
+      <div class="project-subtitle">Le Wagon · Lille, 2024–2025</div>
+      <p class="project-desc">
+        Pilotage en autonomie de la stratégie marketing multicanale et organisation de 1 à 2 événements mensuels (20 à 50 participants) pour une école tech leader en Europe. Gestion CRM via HubSpot.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Community management</span>
+        <span class="project-tag">Événementiel</span>
+        <span class="project-tag">HubSpot CRM</span>
+        <span class="project-tag">Lead generation</span>
+      </div>
+    </div>
+
+    <!-- ── Tu peux ajouter d'autres projets en copiant un bloc .project-card ── -->
+
+  </div>
+</section>
+
+<!-- ══ EXPÉRIENCE ══ -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-label">Expérience</span>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-dates">2024 – 2025</div>
+      <div>
+        <div class="exp-role">Community, Marketing &amp; Events Manager</div>
+        <div class="exp-company">Le Wagon · Lille, France</div>
+      </div>
+      <div class="exp-location">Edtech</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dates">2023 – 2024</div>
+      <div>
+        <div class="exp-role">Communication Manager</div>
+        <div class="exp-company">Crédit Agricole Consumer Finance · Roubaix</div>
+      </div>
+      <div class="exp-location">Fintech</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dates">2023</div>
+      <div>
+        <div class="exp-role">Conseillère de vente</div>
+        <div class="exp-company">Burberry · Chessy (Val-d'Europe)</div>
+      </div>
+      <div class="exp-location">Luxe</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dates">2022</div>
+      <div>
+        <div class="exp-role">Marketing &amp; Sales Assistant</div>
+        <div class="exp-company">Woodnet Ltd · Hô-Chi-Minh-Ville, Vietnam</div>
+      </div>
+      <div class="exp-location">International</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ COMPÉTENCES ══ -->
+<section id="competences">
+  <div class="section-header">
+    <span class="section-label">Compétences</span>
+  </div>
+  <div class="skills-grid">
+
+    <div>
+      <div class="skills-group-title">Marketing digital</div>
+      <ul class="skills-list">
+        <li>Social Media Marketing</li>
+        <li>CRM &amp; HubSpot</li>
+        <li>E-mailing &amp; automation</li>
+        <li>Google Analytics &amp; Ads</li>
+        <li>SEO / SEM</li>
+        <li>Brand content &amp; storytelling</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="skills-group-title">RSE &amp; Communication responsable</div>
+      <ul class="skills-list">
+        <li>Communication RSE</li>
+        <li>Marketing responsable</li>
+        <li>Gestion de projet à impact</li>
+        <li>Sensibilisation &amp; formation</li>
+        <li>Événementiel éco-responsable</li>
+        <li>Reporting RSE</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="skills-group-title">Outils &amp; langues</div>
+      <ul class="skills-list">
+        <li>Canva · WordPress</li>
+        <li>MailChimp · Notion · OpenAI</li>
+        <li>Microsoft 365</li>
+        <li>Français (natif)</li>
+        <li>Anglais (courant — TOEIC 905)</li>
+        <li>Certif. Google Analytics &amp; Ads</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <span class="section-label">Contact</span>
+      <h2 class="contact-heading">Une opportunité ?<br><em>Écrivons-nous.</em></h2>
+    </div>
+    <div class="contact-right">
+      <div class="contact-item">
+        <span class="contact-item-label">Email</span>
+        <a href="mailto:clara.houy.pro@gmail.com" class="contact-item-value">clara.houy.pro@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Téléphone</span>
+        <span class="contact-item-value">+33 6 19 51 03 20</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">LinkedIn</span>
+        <!-- ── À modifier : remplace # par ton URL LinkedIn ── -->
+        <a href="https://www.linkedin.com/in/clara-houy" class="contact-item-value" target="_blank">linkedin.com/in/clara-houy</a>
+      </div>
+      <div class="contact-btns">
+        <a href="mailto:clara.houy.pro@gmail.com" class="btn-cream">Envoyer un email</a>
+        <!-- ── À modifier : remplace # par le lien vers ton CV ── -->
+        <a href="#" class="btn-ghost">Télécharger le CV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Clara Houy</p>
+  <p>Marketing Digital &amp; RSE · Paris · Lille · International</p>
+</footer>
+
+</body>
+</html>
