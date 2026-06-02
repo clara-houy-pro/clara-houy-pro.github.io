@@ -6,22 +6,25 @@
 <title>Clara Houy — Marketing & RSE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cream: #FAF7F2;
+    --cream: #FAF8F3;
+    --paper: #FFFFFC;
     --cream-dark: #F2EDE4;
-    --cream-mid: #EDE6DA;
+    --cream-mid: #E6E1D4;
     --tan: #C9B99A;
     --tan-dark: #8C7B6B;
-    --ink: #2C2825;
-    --ink-light: #5C534A;
-    --ink-faint: #A89E93;
-    --accent: #8C7B6B;
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
+    --ink: #1D211C;
+    --ink-light: #454B41;
+    --ink-faint: #7C8076;
+    --accent: #3F5740;
+    --accent-dark: #324631;
+    --accent-light: #A7BFA4;
+    --display: 'Outfit', system-ui, sans-serif;
+    --sans: 'Inter', system-ui, sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -30,7 +33,7 @@
     background: var(--cream);
     color: var(--ink);
     font-family: var(--sans);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
@@ -49,10 +52,10 @@
   }
 
   .nav-logo {
-    font-family: var(--serif);
+    font-family: var(--display);
     font-size: 1.1rem;
-    font-weight: 400;
-    letter-spacing: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink);
     text-decoration: none;
@@ -73,7 +76,7 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover { color: var(--accent); }
 
   /* ── HERO ── */
   .hero {
@@ -90,7 +93,8 @@
     font-size: 0.65rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--tan);
+    color: var(--accent);
+    font-weight: 500;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -102,25 +106,26 @@
     display: inline-block;
     width: 2rem;
     height: 1px;
-    background: var(--tan);
+    background: var(--accent);
   }
 
   .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1.1;
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 6vw, 4.3rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
     color: var(--ink);
     margin-bottom: 1.5rem;
   }
 
   .hero h1 em {
-    font-style: italic;
-    color: var(--tan-dark);
+    font-style: normal;
+    color: var(--accent);
   }
 
   .hero-sub {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--ink-light);
     line-height: 1.8;
     max-width: 460px;
@@ -136,11 +141,11 @@
 
   .tag {
     font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--tan-dark);
-    border: 1px solid var(--tan);
-    padding: 0.3rem 0.8rem;
-    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    border: 1px solid var(--cream-mid);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
   }
 
   .hero-cta {
@@ -152,9 +157,11 @@
   .btn {
     font-family: var(--sans);
     font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    padding: 0.8rem 2rem;
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
     text-decoration: none;
     cursor: pointer;
     border: none;
@@ -163,19 +170,19 @@
   }
 
   .btn-dark {
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--accent);
+    color: #FAF8F3;
   }
 
-  .btn-dark:hover { background: var(--ink-light); }
+  .btn-dark:hover { background: var(--accent-dark); }
 
   .btn-outline {
     background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--tan);
+    color: var(--accent);
+    border: 1px solid var(--accent);
   }
 
-  .btn-outline:hover { background: var(--cream-dark); }
+  .btn-outline:hover { background: var(--accent); color: #FAF8F3; }
 
 
   /* ── SECTIONS ── */
@@ -195,7 +202,8 @@
     font-size: 0.65rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--tan);
+    color: var(--accent);
+    font-weight: 500;
   }
 
   .section-header::after {
@@ -213,42 +221,48 @@
   }
 
   .project-card {
-    background: var(--cream-dark);
+    background: var(--paper);
     border: 1px solid var(--cream-mid);
+    border-radius: 12px;
     padding: 2rem;
-    transition: border-color 0.2s;
+    box-shadow: 0 1px 3px rgba(45, 40, 30, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     cursor: default;
   }
 
-  .project-card:hover { border-color: var(--tan); }
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(45, 40, 30, 0.10);
+  }
 
   .project-type {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--tan);
+    color: var(--accent);
+    font-weight: 500;
     margin-bottom: 0.75rem;
   }
 
   .project-title {
-    font-family: var(--serif);
+    font-family: var(--display);
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--ink);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
   }
 
   .project-subtitle {
-    font-size: 0.75rem;
-    color: var(--tan-dark);
-    font-style: italic;
-    font-family: var(--serif);
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 400;
     margin-bottom: 1rem;
   }
 
   .project-desc {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--ink-light);
     line-height: 1.7;
     margin-bottom: 1.25rem;
@@ -262,10 +276,11 @@
 
   .project-tag {
     font-size: 0.6rem;
-    letter-spacing: 0.08em;
-    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    color: var(--ink-light);
     border: 1px solid var(--cream-mid);
-    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    padding: 0.25rem 0.7rem;
   }
 
   .project-link {
@@ -275,15 +290,16 @@
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--tan-dark);
+    font-weight: 500;
+    color: var(--accent);
     text-decoration: none;
     margin-top: 1.25rem;
-    border-bottom: 1px solid var(--tan);
+    border-bottom: 1px solid var(--accent);
     padding-bottom: 1px;
-    transition: color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
   }
 
-  .project-link:hover { color: var(--ink); }
+  .project-link:hover { color: var(--ink); border-color: var(--ink); }
 
   /* ── EXPÉRIENCE ── */
   .exp-list { display: flex; flex-direction: column; }
@@ -301,21 +317,22 @@
 
   .exp-dates {
     font-size: 0.7rem;
-    color: var(--tan);
+    color: var(--accent);
+    font-weight: 500;
     letter-spacing: 0.05em;
     padding-top: 0.15rem;
   }
 
   .exp-role {
-    font-family: var(--serif);
+    font-family: var(--display);
     font-size: 1.05rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--ink);
     margin-bottom: 0.2rem;
   }
 
   .exp-company {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: var(--ink-light);
   }
 
@@ -336,7 +353,8 @@
     font-size: 0.65rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--tan);
+    color: var(--accent);
+    font-weight: 500;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--cream-mid);
@@ -350,7 +368,7 @@
   }
 
   .skills-list li {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--ink-light);
     display: flex;
     align-items: center;
@@ -362,7 +380,7 @@
     display: inline-block;
     width: 1rem;
     height: 1px;
-    background: var(--tan);
+    background: var(--accent);
     flex-shrink: 0;
   }
 
@@ -379,28 +397,29 @@
     align-items: center;
   }
 
-  .contact-left .section-label { color: var(--tan); }
+  .contact-left .section-label { color: var(--accent-light); }
 
   .contact-left .section-label::before {
     content: '';
     display: inline-block;
     width: 1.5rem;
     height: 1px;
-    background: var(--tan);
+    background: var(--accent-light);
     margin-right: 0.75rem;
     vertical-align: middle;
   }
 
   .contact-heading {
-    font-family: var(--serif);
+    font-family: var(--display);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 300;
+    font-weight: 500;
     color: var(--cream);
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
     margin-top: 1rem;
   }
 
-  .contact-heading em { font-style: italic; color: var(--tan); }
+  .contact-heading em { font-style: normal; color: var(--accent-light); }
 
   .contact-right {
     display: flex;
@@ -422,7 +441,8 @@
     font-size: 0.6rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--tan);
+    color: var(--accent-light);
+    font-weight: 500;
   }
 
   .contact-item-value {
@@ -432,7 +452,7 @@
     transition: color 0.2s;
   }
 
-  .contact-item-value:hover { color: var(--tan); }
+  .contact-item-value:hover { color: var(--accent-light); }
 
   .contact-btns {
     display: flex;
@@ -446,9 +466,11 @@
     color: var(--ink);
     font-family: var(--sans);
     font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    padding: 0.8rem 2rem;
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;
@@ -464,16 +486,18 @@
     border: 1px solid rgba(255,255,255,0.25);
     font-family: var(--sans);
     font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    padding: 0.8rem 2rem;
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;
     display: inline-block;
   }
 
-  .btn-ghost:hover { border-color: var(--tan); color: var(--tan); }
+  .btn-ghost:hover { border-color: var(--accent-light); color: var(--accent-light); }
 
   /* ── FOOTER ── */
   footer {
@@ -532,7 +556,7 @@
 </nav>
 
 <!-- ══ HERO ══ -->
-<section class="hero" style="border-bottom: 1px solid var(--cream-mid);">
+<section class="hero">
   <div class="hero-left">
     <div class="hero-label">Marketing Digital &amp; RSE</div>
     <h1>Bonjour,<br>je suis <em>Clara.</em></h1>
@@ -675,7 +699,7 @@
       </ul>
     </div>
 
-   <div>
+    <div>
       <div class="skills-group-title">Outils &amp; Certifications</div>
       <ul class="skills-list">
         <li>Google Analytics (certifié)</li>
