@@ -345,8 +345,8 @@
   /* ── COMPÉTENCES ── */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 3rem;
   }
 
   .skills-group-title {
@@ -360,28 +360,26 @@
     border-bottom: 1px solid var(--cream-mid);
   }
 
-  .skills-list {
-    list-style: none;
+  .skills-pills {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
-  .skills-list li {
-    font-size: 0.85rem;
-    color: var(--ink-light);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+  .skill-pill {
+    font-size: 0.78rem;
+    color: #33402F;
+    background: rgba(63, 87, 64, 0.06);
+    border: 1px solid rgba(63, 87, 64, 0.18);
+    border-radius: 20px;
+    padding: 0.35rem 0.85rem;
+    line-height: 1.3;
+    transition: background 0.2s, border-color 0.2s;
   }
 
-  .skills-list li::before {
-    content: '';
-    display: inline-block;
-    width: 1rem;
-    height: 1px;
-    background: var(--accent);
-    flex-shrink: 0;
+  .skill-pill:hover {
+    background: rgba(63, 87, 64, 0.12);
+    border-color: var(--accent);
   }
 
   /* ── CONTACT ── */
@@ -536,7 +534,7 @@
     .portfolio-grid { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
     .exp-dates { font-size: 0.65rem; }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
     .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
@@ -678,51 +676,57 @@
 
     <div>
       <div class="skills-group-title">Marketing digital</div>
-      <ul class="skills-list">
-        <li>Social Media Marketing</li>
-        <li>CRM &amp; HubSpot</li>
-        <li>E-mailing &amp; automation</li>
-        <li>SEO / SEM</li>
-        <li>Brand content &amp; storytelling</li>
-      </ul>
+      <div class="skills-pills">
+        <span class="skill-pill">Social Media Marketing</span>
+        <span class="skill-pill">Community management</span>
+        <span class="skill-pill">CRM &amp; HubSpot</span>
+        <span class="skill-pill">E-mailing &amp; automation</span>
+        <span class="skill-pill">SEO / SEM</span>
+        <span class="skill-pill">Brand content &amp; storytelling</span>
+        <span class="skill-pill">Création de site internet</span>
+        <span class="skill-pill">Gestion de site internet</span>
+        <span class="skill-pill">No-code / low-code</span>
+      </div>
     </div>
 
     <div>
       <div class="skills-group-title">RSE &amp; Communication</div>
-      <ul class="skills-list">
-        <li>Communication RSE</li>
-        <li>Marketing responsable</li>
-        <li>Gestion de projet à impact</li>
-        <li>Sensibilisation &amp; formation</li>
-        <li>Événementiel éco-responsable</li>
-      </ul>
+      <div class="skills-pills">
+        <span class="skill-pill">Communication RSE</span>
+        <span class="skill-pill">Marketing responsable</span>
+        <span class="skill-pill">Gestion de projet à impact</span>
+        <span class="skill-pill">Sensibilisation &amp; formation</span>
+        <span class="skill-pill">Événementiel éco-responsable</span>
+      </div>
     </div>
 
     <div>
       <div class="skills-group-title">Outils &amp; Certifications</div>
-      <ul class="skills-list">
-        <li>Google Analytics (certifié)</li>
-        <li>Google Ads (certifié)</li>
-        <li>HubSpot CRM</li>
-        <li>MailChimp</li>
-        <li>WordPress</li>
-        <li>Canva</li>
-        <li>Microsoft 365</li>
-        <li>Notion</li>
-        <li>OpenAI</li>
-      </ul>
+      <div class="skills-pills">
+        <span class="skill-pill">Google Analytics (certifié)</span>
+        <span class="skill-pill">Google Ads (certifié)</span>
+        <span class="skill-pill">TOEIC 905</span>
+        <span class="skill-pill">TOEFL 82</span>
+        <span class="skill-pill">HubSpot CRM</span>
+        <span class="skill-pill">MailChimp</span>
+        <span class="skill-pill">WordPress</span>
+        <span class="skill-pill">Canva</span>
+        <span class="skill-pill">Microsoft 365</span>
+        <span class="skill-pill">OpenAI</span>
+        <span class="skill-pill">Anthropic AI</span>
+      </div>
     </div>
 
     <div>
       <div class="skills-group-title">Langues</div>
-      <ul class="skills-list">
-        <li>Français (natif)</li>
-        <li>Anglais (courant)</li>
-        <li>TOEIC 905 · TOEFL 82</li>
-      </ul>
+      <div class="skills-pills">
+        <span class="skill-pill">Français (natif)</span>
+        <span class="skill-pill">Anglais (courant)</span>
+      </div>
     </div>
 
   </div>
+
 </section>
 
 <!-- ══ CONTACT ══ -->
